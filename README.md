@@ -7,7 +7,7 @@ Warning: This project is not completed, yet!
 Data oring: https://www.saude.mg.gov.br/coronavirus/painel
 
 
-### Some tools:
+### Tools:
 
 :whale: Docker
 
