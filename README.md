@@ -7,6 +7,18 @@ Warning: This project is not completed, yet!
 Data oring: https://www.saude.mg.gov.br/coronavirus/painel
 
 
+### Some tools:
+
+:whale: Docker
+
+:cloud: AWS Lambda
+
+:fireworks: Serverless Framework
+
+
+and some: Enumerations, Factories and DIs :sunglasses:
+
+
 ### How to run local
 
 Install
@@ -16,6 +28,13 @@ Install
 and run
 
 `npm run invoke-local`
+
+
+
+
+
+
+
 
 
 
