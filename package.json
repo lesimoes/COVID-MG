@@ -1,0 +1,22 @@
+{
+  "name": "realtime-covid19MG",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "invoke-local": "sls invoke local -f readFile",
+    "deploy": "sls deploy"
+  },
+  "author": "lesimoes",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless": "^1.72.0",
+    "serverless-localstack": "^0.4.24",
+    "serverless-offline": "^6.4.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "env-var": "^6.2.0"
+  }
+}

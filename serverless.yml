@@ -1,0 +1,53 @@
+service: realtime-covid19
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, "dev"}
+
+  environment:
+    ${file(./config/env.${self:provider.stage}.json)}
+  
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: 
+        - arn:aws:s3:::${self:provider.environment.BUCKET_NAME}/*
+        - arn:aws:s3:::${self:provider.environment.BUCKET_NAME}
+
+custom:
+  sqsArn:
+    Fn::GetAtt:
+      - Arn
+  schedulerRate: rate(1 minute)
+  enabled: true
+
+  localstack:
+    stages:
+      - local
+    # desabilitar o localstack no deploy
+    autostart: false
+
+  serverless-offline:
+    useChildProcesses: true
+
+package:
+  individually: true 
+  excludeDevDependencies: true
+
+
+
+functions:
+  readFile:
+    handler: src/index.readFile
+    events:
+      - schedule:
+          rate: ${self:custom.schedulerRate}
+          name: schedule-read-file-${self:provider.stage}
+          description: Read covid19 csv file each minute
+          enabled: ${self:custom.enabled}
+
+plugins:
+  - serverless-localstack
+  - serverless-offline
