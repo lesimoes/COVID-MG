@@ -1,37 +1,44 @@
-## RealTimeCovidMG
+## RealTime Covid19 MG :mask:
 
-A simple and scalable app to manage covid19 data from Minas Gerais. :open_mouth:
+A serverless application to save and store covid19 data from Minas Gerais. :open_mouth:
 
 Warning: This project is not completed, yet!
 
-Data oringin: https://www.saude.mg.gov.br/coronavirus/painel
+Data origin: https://www.saude.mg.gov.br/coronavirus/painel
 
 
 ### Tools:
 
 :whale: Docker
-
+</br>
 :cloud: AWS Lambda
-
+</br>
 :fireworks: Serverless Framework
 
 
-and some: Enumerations, Factories and DIs :sunglasses:
+and some: Enums, Factories and DIs :sunglasses:
+
+### How to intstall and run with docker :whale: + nodemon :grin:
+
+Build and run (first time) </br>`docker-compose up --b`
+
+Run </br>`docker-compose up`
+
+### How to intstall and run local :computer:
+
+Install</br>`npm install`
+
+and run</br>`npm run invoke-local`
 
 
-### How to run local
-
-Install
-
-`npm install`
-
-and run
-
-`npm run invoke-local`
 
 
-
-
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 
 
 
