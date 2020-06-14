@@ -12,6 +12,7 @@ Data origin: https://www.saude.mg.gov.br/coronavirus/painel
 :whale: Docker
 </br>
 :cloud: AWS Lambda
+</br>
 :floppy_disk: AWS S3
 </br>
 :fireworks: Serverless Framework
