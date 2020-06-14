@@ -6,6 +6,8 @@ Warning: This project is not completed, yet!
 
 Data origin: https://www.saude.mg.gov.br/coronavirus/painel
 
+![architecture]
+(https://github.com/lesimoes/RealTimeCovidMG/blob/master/AWS%20Project.png)
 
 ### Tools:
 
