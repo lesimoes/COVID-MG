@@ -7,7 +7,6 @@ provider:
 
   environment:
     ${file(./config/env.${self:provider.stage}.json)}
-  
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -20,7 +19,7 @@ custom:
   sqsArn:
     Fn::GetAtt:
       - Arn
-  schedulerRate: rate(1 minute)
+  schedulerRate: rate(12 hours)
   enabled: true
 
   localstack:
@@ -45,8 +44,13 @@ functions:
       - schedule:
           rate: ${self:custom.schedulerRate}
           name: schedule-read-file-${self:provider.stage}
-          description: Read covid19 csv file each minute
+          description: Read covid19 csv file each 12 hours
           enabled: ${self:custom.enabled}
+      - s3:
+          bucket: ${self:provider.environment.BUCKET_NAME}
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .csv      
 
 plugins:
   - serverless-localstack
