@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npx nodemon --exec npm run offline",
+    "offline": "npx sls offline start --host 0.0.0.0",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "invoke-local": "sls invoke local -f scheduler",
-    "deploy": "sls deploy"
+    "invoke-local": "npx sls invoke local -f scheduler",
+    "deploy": "npx sls deploy"
   },
   "author": "lesimoes",
   "license": "ISC",

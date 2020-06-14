@@ -4,7 +4,7 @@ A simple and scalable app to manage covid19 data from Minas Gerais. :open_mouth:
 
 Warning: This project is not completed, yet!
 
-Data oring: https://www.saude.mg.gov.br/coronavirus/painel
+Data oringin: https://www.saude.mg.gov.br/coronavirus/painel
 
 
 ### Tools:

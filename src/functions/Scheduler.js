@@ -24,7 +24,7 @@ class Scheduler {
   
   }
   async main (event) {
-  
+    
     try {
       await this.downloadFile();
       return {
