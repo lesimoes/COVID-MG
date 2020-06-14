@@ -2,7 +2,7 @@ const Axios = require('axios');
 const { PassThrough } = require('stream');
 const { STATUS, METHOD } = require('../enums/EHttp');
 
-class ReadFile {
+class Scheduler {
 
   constructor (settings) {
     this.settings = settings;
@@ -18,9 +18,9 @@ class ReadFile {
     })
     response.data.pipe(writer);
 
-    // writer.on('data', (e) => {
-    //   console.log(e.toString('utf8'))
-    // })
+    writer.on('data', (e) => {
+      console.log(e.toString('utf8'))
+    })
   
   }
   async main (event) {
@@ -42,4 +42,4 @@ class ReadFile {
   }
 }
 
-module.exports = ReadFile;
+module.exports = Scheduler;

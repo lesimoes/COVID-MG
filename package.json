@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "invoke-local": "sls invoke local -f readFile",
+    "invoke-local": "sls invoke local -f scheduler",
     "deploy": "sls deploy"
   },
   "author": "lesimoes",
   "license": "ISC",
   "devDependencies": {
+    "nodemon": "^2.0.4",
     "serverless": "^1.72.0",
     "serverless-localstack": "^0.4.24",
     "serverless-offline": "^6.4.0"

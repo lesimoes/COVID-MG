@@ -1,8 +1,8 @@
 const settings = require('../config/settings');
-const ReadFile = require('./functions/ReadFile');
+const Scheduler = require('./functions/Scheduler');
 
-const readFile = new ReadFile(settings);
+const scheduler = new Scheduler(settings);
 
 module.exports = {
-  readFile: readFile.main.bind(readFile),
+  scheduler: scheduler.main.bind(scheduler),
 }

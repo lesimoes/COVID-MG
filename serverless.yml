@@ -39,8 +39,8 @@ package:
 
 
 functions:
-  readFile:
-    handler: src/index.readFile
+  scheduler:
+    handler: src/index.scheduler
     events:
       - schedule:
           rate: ${self:custom.schedulerRate}
