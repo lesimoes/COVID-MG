@@ -1,6 +1,7 @@
 const Axios = require('axios');
 const { PassThrough } = require('stream');
 const { STATUS, METHOD } = require('../enums/EHttp');
+const bucketFactory = require('../factories/bucketFactory');
 
 class Scheduler {
 
@@ -18,10 +19,12 @@ class Scheduler {
     })
     response.data.pipe(writer);
 
-    writer.on('data', (e) => {
-      console.log(e.toString('utf8'))
-    })
-  
+    // writer.on('data', (e) => {
+    //   console.log(e.toString('utf8'))
+    // })
+
+    const uploadResponse = await bucketFactory('S3').uploadFile(writer, 'covid19.csv');
+    console.log('BUCKET', uploadResponse)
   }
   async main (event) {
     
