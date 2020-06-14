@@ -4,7 +4,8 @@ A serverless application to save and store covid19 data from Minas Gerais. :open
 
 Warning: This project is not completed, yet!
 
-Data origin: https://www.saude.mg.gov.br/coronavirus/painel
+
+### How it works
 
 ![architecture](https://raw.githubusercontent.com/lesimoes/RealTimeCovidMG/master/AWS%20Project.png)
 
@@ -32,20 +33,6 @@ Run </br>`docker-compose up`
 Install</br>`npm install`
 
 and run</br>`npm run invoke-local`
-
-
-
-
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-
-
-
-
 
 
 
