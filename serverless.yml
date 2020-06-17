@@ -4,10 +4,16 @@ provider:
   name: aws
   runtime: nodejs12.x
   stage: ${opt:stage, "dev"}
-
   environment:
     ${file(./config/env.${self:provider.stage}.json)}
   iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - sqs:SendMessage
+        - sqs:GetQueueUrl
+        - sqs:CreateQueue
+        - sqs:ReceiveMessage
+      Resource: ${self:custom.sqsArn}
     - Effect: Allow
       Action:
         - s3:*
@@ -18,7 +24,9 @@ provider:
 custom:
   sqsArn:
     Fn::GetAtt:
+      - SQSQueue
       - Arn
+
   schedulerRate: rate(12 hours)
   enabled: true
 
@@ -35,7 +43,13 @@ package:
   individually: true 
   excludeDevDependencies: true
 
-
+resources:
+  Resources:
+    SQSQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self:provider.environment.SQS_QUEUE}
+        VisibilityTimeout: 60
 
 functions:
   scheduler:
@@ -46,11 +60,15 @@ functions:
           name: schedule-read-file-${self:provider.stage}
           description: Read covid19 csv file each 12 hours
           enabled: ${self:custom.enabled}
+ 
+  s3listener:
+    handler: src/index.s3listener  
+    events:
       - s3:
           bucket: ${self:provider.environment.BUCKET_NAME}
           event: s3:ObjectCreated:*
           rules:
-            - suffix: .csv      
+            - suffix: .csv 
 
 plugins:
   - serverless-localstack

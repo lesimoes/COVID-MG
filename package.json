@@ -6,8 +6,11 @@
   "scripts": {
     "start": "npx nodemon --exec npm run offline",
     "offline": "npx sls offline start --host 0.0.0.0",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "invoke-local": "npx sls invoke local -f scheduler",
+    "logs:scheduler": "npx sls logs -f scheduler -t",
+    "logs:s3listener": "npx sls logs -f s3listener -t",
+    "invoke:scheduler": "npx sls invoke local -f scheduler",
+    "invoke-local:scheduler": "npx sls invoke local -f scheduler",
+    "invoke-local:s3listener": "npx sls invoke local -f s3listener",
     "deploy": "npx sls deploy"
   },
   "author": "lesimoes",
@@ -20,6 +23,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "csvtojson": "^2.0.10",
     "env-var": "^6.2.0"
   }
 }

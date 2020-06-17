@@ -24,7 +24,7 @@ class Scheduler {
     // })
 
     const uploadResponse = await bucketFactory('S3').uploadFile(writer, 'covid19.csv');
-    console.log('BUCKET', uploadResponse)
+    // console.log('BUCKET', uploadResponse)
   }
   async main (event) {
     
