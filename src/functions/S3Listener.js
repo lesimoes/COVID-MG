@@ -3,8 +3,19 @@ class S3Listener {
     this.settings = settings;
   }
 
-  async main() {
-    console.log('CHAMEI')
+  async main(event) {
+    try {
+      console.log(event)
+      return {
+        statusCode: 200,
+        body: 'Sucesso'
+      }
+    } catch (error) {
+      return {
+        statusCode: 500,
+        body: 'Ruim'
+      }
+    }
   }
 }
 
