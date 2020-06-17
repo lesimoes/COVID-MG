@@ -17,10 +17,24 @@ Warning: This project is not completed, yet!
 </br>
 :floppy_disk: AWS S3
 </br>
+:arrow_forward: AWS SQS
+</br>
 :fireworks: Serverless Framework
 
 
 and some: Enums, Factories and DIs :sunglasses:
+
+### Checklist
+[x] Get covid19 data (Scheduler)
+</br>
+[x] Save on S3 Bucket
+</br>
+[x] Trigger Lambda when a csv file was created
+</br>
+[x] Send each line as a message to SQS
+</br>
+[ ] Trigger and scale a lambda for each message and save on DynamoDb
+[ ] Provides Dynamo data as an API (Lambda) 
 
 ### How to intstall and run with docker :whale: + nodemon :grin:
 
