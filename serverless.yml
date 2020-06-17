@@ -9,6 +9,13 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
+        - sqs:SendMessage
+        - sqs:GetQueueUrl
+        - sqs:CreateQueue
+        - sqs:ReceiveMessage
+      Resource: ${self:custom.sqsArn}
+    - Effect: Allow
+      Action:
         - s3:*
       Resource: 
         - arn:aws:s3:::${self:provider.environment.BUCKET_NAME}/*
@@ -17,7 +24,9 @@ provider:
 custom:
   sqsArn:
     Fn::GetAtt:
+      - SQSQueue
       - Arn
+
   schedulerRate: rate(12 hours)
   enabled: true
 
@@ -34,7 +43,13 @@ package:
   individually: true 
   excludeDevDependencies: true
 
-
+resources:
+  Resources:
+    SQSQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self:provider.environment.SQS_QUEUE}
+        VisibilityTimeout: 60
 
 functions:
   scheduler:

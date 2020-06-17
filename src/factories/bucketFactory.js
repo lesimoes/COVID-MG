@@ -1,5 +1,5 @@
 const S3 = require('../../src/libs/S3');
-const { BucketService } = require('../enums/EBucket')
+const { BucketService } = require('../enums/EAws')
 const settings = require('../../config/settings');
 
 const createS3Service = () => {

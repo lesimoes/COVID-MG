@@ -11,7 +11,6 @@
     "invoke:scheduler": "npx sls invoke local -f scheduler",
     "invoke-local:scheduler": "npx sls invoke local -f scheduler",
     "invoke-local:s3listener": "npx sls invoke local -f s3listener",
-
     "deploy": "npx sls deploy"
   },
   "author": "lesimoes",
@@ -24,6 +23,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "csvtojson": "^2.0.10",
     "env-var": "^6.2.0"
   }
 }
