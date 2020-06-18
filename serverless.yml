@@ -69,12 +69,12 @@ functions:
           event: s3:ObjectCreated:*
           rules:
             - suffix: .csv
-  # sqslistener:
-  #   handler: src/index.sqslistener
-  #   events:
-  #      - sqs:
-  #         batchSize: 1
-  #         arn: ${self:custom.sqsArn}
+  sqslistener:
+    handler: src/index.sqslistener
+    events:
+       - sqs:
+          batchSize: 1
+          arn: ${self:custom.sqsArn}
 
 plugins:
   - serverless-localstack
