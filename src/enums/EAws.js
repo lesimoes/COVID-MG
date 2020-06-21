@@ -8,7 +8,13 @@ const SQSService = Object.freeze({
   NONE: 'none',
 })
 
+const DataBaseService = Object.freeze({
+  DYNAMO: 'Dynamo',
+  NONE: 'None',
+})
+
 module.exports = {
   BucketService,
   SQSService,
+  DataBaseService,
 }

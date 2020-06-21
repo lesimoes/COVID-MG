@@ -8,4 +8,4 @@ RUN npm ci --silent
 
 COPY . . 
 
-CMD npm run invoke-local 
+# CMD npm run invoke-local 
