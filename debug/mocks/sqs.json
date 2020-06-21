@@ -1,0 +1,15 @@
+{
+  "Records":[
+    {
+      "messageId":"a79090c6-bc12-41d7-9dba-f060d460b3c4",
+      "receiptHandle":"AQEBNzqVMKcHnv5OA/CjeVLfhET0S38Uud5ALtEtrJtijoQgUB2yrI3i05mmzYLOtjw3BucVS7CVN1AsleBZ9e1op/oH6S3G2SBS/vaCgcshwNUg3qzAUssUETuSq9wcw2zNoXhDv//UX/Omqn0yReG3kMhFULe4zv6LGewZgIhbDiaV8xaaiACQuiwHXs1FVGqQsR5AV7j8XmVOkMPH9kn7yBX4T1DklHHCK3ajcwzvqkIwQnMYwslbEsTJechRS1VXvwPFhJnF6oBXWt82zPoSioSkSx3+l6ONrOieyw9dCLnQz+y+jo9VLrGm3mcfHdyHmM4j0vkdWQLO2yxEf2yM8MkMGtD+tchMRj4kji9BaM0gYiZpid5pflesPZzLmqGm",
+      "body":"{\"field1\":\"3;3;208154;14/03/20;Caso Confirmado;Masculino;65;60 a 69 anos;313670;Juiz de Fora;SIM;RECUPERADO;SIM;SIM;11/06/20\"}\n",
+      "attributes":[{}],
+      "messageAttributes":{},
+      "md5OfBody":"7982ff226a346a2acf3156bb9c73efcf",
+      "eventSource":"aws:sqs",
+      "eventSourceARN":"arn:aws:sqs:us-east-1:875443487658:file-covid-dev",
+      "awsRegion":"us-east-1"
+    }
+  ]
+}

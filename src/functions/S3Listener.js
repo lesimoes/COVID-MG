@@ -10,7 +10,6 @@ class S3Listener {
   }
 
   processDataOnDemand (sqsService) {
-    console.log('sdsdsadsd')
     const writableStream = new Writable({
       write: (chunk, encoding, done) => {
         const line = chunk.toString();
@@ -52,7 +51,7 @@ class S3Listener {
 
       await this.pipefyStreams(
         resultS3.createReadStream(),
-        csvtojson(),
+        csvtojson({ noheader: true }),
         this.processDataOnDemand(queueService))
 
       return {

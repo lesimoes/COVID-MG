@@ -1,4 +1,4 @@
-const SQS = require('../libs/SQS').default;
+const SQS = require('../libs/SQS');
 const { SQSService } = require('../enums/EAws')
 const settings = require('../../config/settings');
 

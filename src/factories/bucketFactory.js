@@ -1,4 +1,4 @@
-const S3 = require('../libs/S3').default;
+const S3 = require('../libs/S3');
 const { BucketService } = require('../enums/EAws')
 const settings = require('../../config/settings');
 

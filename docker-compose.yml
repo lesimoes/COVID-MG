@@ -7,6 +7,8 @@ services:
     ports:
       - "4566-4599:4566-4599"
       - "8080:8080"
+      # dynamodb shell
+      - "4564:4564"
     environment:
       - SERVICES=s3,sqs,dynamodb,lambda,apigateway
       - LAMBDA_EXECUTOR=local

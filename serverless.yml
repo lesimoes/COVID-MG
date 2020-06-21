@@ -20,6 +20,15 @@ provider:
       Resource: 
         - arn:aws:s3:::${self:provider.environment.BUCKET_NAME}/*
         - arn:aws:s3:::${self:provider.environment.BUCKET_NAME}
+    - Effect: Allow
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:Scan
+        - dynamodb:Query
+        - dynamodb:DescribeTable
+      Resource:
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DAILY_TABLE}"  
 
 custom:
   sqsArn:
@@ -50,6 +59,19 @@ resources:
       Properties:
         QueueName: ${self:provider.environment.SQS_QUEUE}
         VisibilityTimeout: 60
+    DAILYTABLE:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.DAILY_TABLE}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
 
 functions:
   scheduler:
@@ -78,4 +100,5 @@ functions:
 
 plugins:
   - serverless-localstack
+  - serverless-dynamodb-local
   - serverless-offline

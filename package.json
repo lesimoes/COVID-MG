@@ -16,6 +16,7 @@
     "invoke-local:s3listener": "npx sls invoke local -f s3listener",
     "invoke-local:sqslistener": "npx sls invoke local -f sqslistener",
     "invoke-debug:s3listener": "npx sls invoke local -f s3listener --path debug/mocks/s3.json",
+    "invoke-debug:sqslistener": "npx sls invoke local -f sqslistener --path debug/mocks/sqs.json",
     "deploy": "npx sls deploy",
     "codestyle": "npx eslint src"
   },
@@ -30,12 +31,14 @@
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "serverless": "^1.72.0",
+    "serverless-dynamodb-local": "^0.2.39",
     "serverless-localstack": "^0.4.24",
     "serverless-offline": "^6.4.0"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "csvtojson": "^2.0.10",
+    "dynamoose": "^2.2.1",
     "env-var": "^6.2.0"
   }
 }
