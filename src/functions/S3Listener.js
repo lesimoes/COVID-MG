@@ -1,4 +1,5 @@
-const { Writable } = require('stream')
+/* eslint-disable import/no-extraneous-dependencies */
+const { Writable, pipeline } = require('stream')// eslint-disable-next-line import/no-extraneous-dependencies
 const csvtojson = require('csvtojson')
 const queueFactory = require('../factories/queueFactory');
 const bucketFactory = require('../factories/bucketFactory');
@@ -9,14 +10,24 @@ class S3Listener {
   }
 
   processDataOnDemand (sqsService) {
+    console.log('sdsdsadsd')
     const writableStream = new Writable({
       write: (chunk, encoding, done) => {
         const line = chunk.toString();
-        // console.log('sending..', line, 'at', new Date().toISOString())
+        console.log('sending..', line, 'at', new Date().toISOString())
         sqsService.sendMessageCallback(line, done)
       },
     });
     return writableStream;
+  }
+
+  async pipefyStreams (...args) {
+    return new Promise((resolve, reject) => {
+      pipeline(
+        ...args,
+        (error) => (error ? reject(error) : resolve())
+      )
+    })
   }
 
   async main (event) {
@@ -32,16 +43,17 @@ class S3Listener {
         },
       },
     ] = event.Records
-    console.log('processing.', name, key)
+    // console.log('processing.', name, key)
     // const key = 'covid19.csv';
     try {
       // FIXME REFACTOR
       const resultS3 = await bucketFactory('S3').getObject(key)
       const queueService = await queueFactory('SQS');
 
-      resultS3.createReadStream()
-        .pipe(csvtojson())
-        .pipe(this.processDataOnDemand(queueService))
+      await this.pipefyStreams(
+        resultS3.createReadStream(),
+        csvtojson(),
+        this.processDataOnDemand(queueService))
 
       return {
         statusCode: 200,
