@@ -27,4 +27,8 @@ jobs:
     - run: npm ci
     - name: Eslint check
       uses: Krizzu/eslint-check-action@v1.1.0
-
+      with:
+        ghToken: ${{ secrets.GITHUB_TOKEN }}
+        eslintFiles: "src"
+        eslintConfig: "eslintrc.js"
+        eslintExt: "js"
