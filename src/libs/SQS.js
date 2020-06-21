@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const AWS = require('aws-sdk');
 
 class SQS {
@@ -6,7 +7,6 @@ class SQS {
     this.port = port;
     this.region = region;
     this.queueName = queueName;
-
   }
 
   getInstance () {
@@ -17,11 +17,10 @@ class SQS {
   }
 
   async getQueueUrl () {
-
     const { QueueUrl } = await this.getInstance()
-    .getQueueUrl({
-      QueueName: this.queueName,
-    }).promise();
+      .getQueueUrl({
+        QueueName: this.queueName,
+      }).promise();
 
     return QueueUrl;
   }
@@ -30,10 +29,10 @@ class SQS {
     const queueUrl = await this.getQueueUrl();
     const messageConfig = {
       QueueUrl: queueUrl,
-      MessageBody: body
+      MessageBody: body,
     }
     this.getInstance()
-    .sendMessage(messageConfig, callback)
+      .sendMessage(messageConfig, callback)
   }
 }
 

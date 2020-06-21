@@ -1,7 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
+const { Writable, pipeline } = require('stream')// eslint-disable-next-line import/no-extraneous-dependencies
+const csvtojson = require('csvtojson')
 const queueFactory = require('../factories/queueFactory');
 const bucketFactory = require('../factories/bucketFactory');
-const { Writable, pipeline } = require('stream')
-const csvtojson = require('csvtojson')
 
 class S3Listener {
   constructor (settings) {
@@ -15,33 +16,33 @@ class S3Listener {
         const line = chunk.toString();
         console.log('sending..', line, 'at', new Date().toISOString())
         sqsService.sendMessageCallback(line, done)
-      }
+      },
     });
     return writableStream;
   }
 
-  async pipefyStreams(...args) {
+  async pipefyStreams (...args) {
     return new Promise((resolve, reject) => {
-        pipeline(
-            ...args,
-            error => error ? reject(error) : resolve()
-        )
+      pipeline(
+        ...args,
+        (error) => (error ? reject(error) : resolve())
+      )
     })
-}
+  }
 
-  async main(event) {
+  async main (event) {
     const [
       {
-          s3: {
-              bucket: {
-                  name
-              },
-              object: {
-                  key
-              }
-          }
-      }
-  ] = event.Records
+        s3: {
+          bucket: {
+            name,
+          },
+          object: {
+            key,
+          },
+        },
+      },
+    ] = event.Records
     // console.log('processing.', name, key)
     // const key = 'covid19.csv';
     try {
@@ -50,19 +51,19 @@ class S3Listener {
       const queueService = await queueFactory('SQS');
 
       await this.pipefyStreams(
-        resultS3.createReadStream(), 
-        csvtojson(), 
+        resultS3.createReadStream(),
+        csvtojson(),
         this.processDataOnDemand(queueService))
 
       return {
         statusCode: 200,
-        body: 'Sucesso'
+        body: 'Sucesso',
       }
     } catch (error) {
       console.log('****** Error', error)
       return {
         statusCode: 500,
-        body: 'Ruim'
+        body: 'Ruim',
       }
     }
   }
