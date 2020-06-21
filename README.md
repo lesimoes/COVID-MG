@@ -1,5 +1,7 @@
 ## RealTime Covid19 MG :mask:
 
+![Node.js CI](https://github.com/lesimoes/RealTimeCovidMG/workflows/Node.js%20CI/badge.svg?branch=master)
+
 A serverless application to save and store covid19 data from Minas Gerais. :open_mouth:
 
 Warning: This project is not completed, yet!
