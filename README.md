@@ -35,9 +35,9 @@ and some: Enums, Factories and DIs :sunglasses:
 </br>
 [x] Send each line as a message to SQS
 </br>
-[ ] Trigger a lambda for each message and save on DynamoDb
+[x] Trigger a lambda for each message and save on DynamoDb
 </br>
-[ ] Provides Dynamo data as an API (Lambda) 
+[ ] Provides Dynamo data as an API with GraphQL
 
 ### How to intstall and run with docker :whale: + nodemon :grin:
 
