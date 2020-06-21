@@ -26,9 +26,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - name: Eslint check
-      uses: Krizzu/eslint-check-action@v1.1.0
-      with:
-        ghToken: ${{ secrets.GITHUB_TOKEN }}
-        eslintFiles: "src"
-        eslintConfig: "eslintrc.js"
-        eslintExt: "js"
+      run: eslint . --ext .js
