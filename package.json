@@ -17,7 +17,7 @@
     "invoke-local:sqslistener": "npx sls invoke local -f sqslistener",
     "invoke-debug:s3listener": "npx sls invoke local -f s3listener --path debug/mocks/s3.json",
     "deploy": "npx sls deploy",
-    "codestyle": "npx eslint src",
+    "codestyle": "npx eslint src"
   },
   "author": "lesimoes",
   "license": "ISC",

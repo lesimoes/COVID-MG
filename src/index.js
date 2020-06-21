@@ -10,9 +10,5 @@ const sqslistener = new SQSListener(settings);
 module.exports = {
   scheduler: scheduler.main.bind(scheduler),
   s3listener: s3listener.main.bind(s3listener),
-<<<<<<< HEAD
-}
-=======
   sqslistener: sqslistener.main.bind(sqslistener),
 }
->>>>>>> master
