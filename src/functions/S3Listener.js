@@ -1,7 +1,7 @@
-const queueFactory = require('../factories/queueFactory');
-const bucketFactory = require('../factories/bucketFactory');
 const { Writable } = require('stream')
 const csvtojson = require('csvtojson')
+const queueFactory = require('../factories/queueFactory');
+const bucketFactory = require('../factories/bucketFactory');
 
 class S3Listener {
   constructor (settings) {
@@ -14,24 +14,24 @@ class S3Listener {
         const line = chunk.toString();
         // console.log('sending..', line, 'at', new Date().toISOString())
         sqsService.sendMessageCallback(line, done)
-      }
+      },
     });
     return writableStream;
   }
 
-  async main(event) {
+  async main (event) {
     const [
       {
-          s3: {
-              bucket: {
-                  name
-              },
-              object: {
-                  key
-              }
-          }
-      }
-  ] = event.Records
+        s3: {
+          bucket: {
+            name,
+          },
+          object: {
+            key,
+          },
+        },
+      },
+    ] = event.Records
     console.log('processing.', name, key)
     // const key = 'covid19.csv';
     try {
@@ -42,16 +42,16 @@ class S3Listener {
       resultS3.createReadStream()
         .pipe(csvtojson())
         .pipe(this.processDataOnDemand(queueService))
-        
+
       return {
         statusCode: 200,
-        body: 'Sucesso'
+        body: 'Sucesso',
       }
     } catch (error) {
       console.log('****** Error', error)
       return {
         statusCode: 500,
-        body: 'Ruim'
+        body: 'Ruim',
       }
     }
   }

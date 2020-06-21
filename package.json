@@ -11,12 +11,19 @@
     "invoke:scheduler": "npx sls invoke local -f scheduler",
     "invoke-local:scheduler": "npx sls invoke local -f scheduler",
     "invoke-local:s3listener": "npx sls invoke local -f s3listener",
-    "deploy": "npx sls deploy"
+    "deploy": "npx sls deploy",
+    "codestyle": "npx eslint src"
   },
   "author": "lesimoes",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-prettier": "^3.1.4",
     "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
     "serverless": "^1.72.0",
     "serverless-localstack": "^0.4.24",
     "serverless-offline": "^6.4.0"

@@ -1,6 +1,6 @@
 const BucketService = Object.freeze({
   S3: 'S3',
-  NONE: 'none'
+  NONE: 'none',
 })
 
 const SQSService = Object.freeze({
@@ -10,5 +10,5 @@ const SQSService = Object.freeze({
 
 module.exports = {
   BucketService,
-  SQSService
+  SQSService,
 }
