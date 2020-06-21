@@ -26,4 +26,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - name: Eslint check
-      run: node_modules/eslint/bin/eslint.js src --ext .js
+      uses: stefanoeb/eslint-action@1.0.2
+      with:
+        files: src/
