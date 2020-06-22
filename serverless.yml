@@ -97,6 +97,12 @@ functions:
        - sqs:
           batchSize: 1
           arn: ${self:custom.sqsArn}
+  graphql:
+    handler: src/index.graphql
+    events:
+      - http:
+          path: graphql
+          method: get
 
 plugins:
   - serverless-localstack
