@@ -42,7 +42,7 @@ custom:
   localstack:
     stages:
       - local
-    # desabilitar o localstack no deploy
+    # AUTOMAGIC: desabilitar o localstack no deploy
     autostart: false
 
   serverless-offline:

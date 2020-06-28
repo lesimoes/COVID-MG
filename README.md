@@ -1,17 +1,17 @@
-## RealTime Covid19 MG :mask:
+## COVID-MG :mask:
 
 ![Node.js CI](https://github.com/lesimoes/RealTimeCovidMG/workflows/Node.js%20CI/badge.svg?branch=master)
 
-A serverless application to save and store covid19 data from Minas Gerais. :open_mouth:
+A serverless application to store COVID19 data from Minas Gerais in DynamoDB. :open_mouth:
 
-Warning: This project is not completed, yet!
+**Warning**: This project is not completed, yet! Checkout the checklist. 
 
 
 ### How it works
 
 ![architecture](https://raw.githubusercontent.com/lesimoes/RealTimeCovidMG/master/AWS%20Project.png)
 
-### Tools:
+### Tooling:
 
 :whale: Docker
 </br>
@@ -27,17 +27,17 @@ Warning: This project is not completed, yet!
 and some: Enums, Factories and DIs :sunglasses:
 
 ### Checklist
-[x] Get covid19 data (Scheduler)
+[x] Get covid19 data (lambda: Scheduler)
 </br>
-[x] Save on S3 Bucket
+[x] Stores data on S3 Bucket (lambda: Scheduler)
 </br>
-[x] Trigger Lambda when a csv file was created
+[x] Triggers Lambda when a csv file was created
 </br>
-[x] Send each line as a message to SQS
+[x] Sends each line as a message to SQS (lambda: S3Listener)
 </br>
-[x] Trigger a lambda for each message and save on DynamoDb
+[x] Triggers a lambda to get messages and store on DynamoDB (lambda: SQSListener)
 </br>
-[ ] Provides Dynamo data as an API with GraphQL
+[ ] Provides data as an API
 
 ### How to intstall and run with docker :whale: + nodemon :grin:
 
@@ -50,6 +50,17 @@ Run </br>`docker-compose up`
 Install</br>`npm install`
 
 and run</br>`npm run invoke-local`
+
+
+### How to deploy on AWS :cloud:
+
+Install</br>`npm install`
+
+and just run</br>`npm run deploy:prod`</br>
+
+then run</br>`npm run invoke:scheduler-prod`
+
+To activate automatic scheduler change 'autostart' property in serverless.yml
 
 
 
