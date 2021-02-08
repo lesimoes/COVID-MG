@@ -40,7 +40,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "csvtojson": "^2.0.10",
-    "dynamoose": "^2.2.1",
+    "dynamoose": "^2.7.0",
     "env-var": "^6.2.0",
     "uuidv4": "^6.1.1"
   }
